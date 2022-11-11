@@ -1,13 +1,34 @@
 import React from 'react'
+import { useEffect, useState } from "react";
 import './SRecords.css'
 function SRecord() {
+  const [data, setData] = useState([]);
+
+  const fetchData = () => {
+    fetch(`getstudents url`)
+      .then((response) => response.json())
+      .then((actualData) => {
+        console.log(actualData);
+        setData(actualData.students);
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
+  useEffect(() => {
+    
+    fetchData();
+  }, []);// eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <div>
       <div id='tablebox'>
         <table class="table table-striped table-dark">
           <thead>
             <tr>
-              <th scope="col">#</th>
+              <th scope="col">SNo</th>
               <th scope="col">Name</th>
               <th scope="col">Age</th>
               <th scope="col">Mobile</th>
@@ -15,27 +36,16 @@ function SRecord() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Name1</td>
-              <td>11</td>
-              <td>12345678</td>
-              <td>test1@gmail.com</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Name1</td>
-              <td>11</td>
-              <td>12345678</td>
-              <td>test1@gmail.com</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Name1</td>
-              <td>11</td>
-              <td>12345678</td>
-              <td>test1@gmail.com</td>
-            </tr>
+            {data.map((item, index) => (
+              <tr key={index}>
+                <td>{item.SNo}</td>
+                <td>{item.Name}</td>
+                <td>{item.Age}</td>
+                <td>{item.Mobile}</td>
+                <td>{item.Email}</td>
+              </tr>
+            ))}
+
           </tbody>
         </table>
       </div>
