@@ -13,11 +13,13 @@ function Dashboard() {
     // 👇️ navigate to /Srecords
     navigate('/Systemlog');
   };
+ 
   return (
     <div>
         <div className='box'>
             <button onClick={navigateToSrecords}>Student Records</button>
             <button onClick={navigateToSystemlogs}>System Logs</button>
+            
         </div>
     </div>
   )
