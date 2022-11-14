@@ -17,8 +17,8 @@ function Dashboard() {
   return (
     <div>
         <div className='box'>
-            <button onClick={navigateToSrecords}>Student Records</button>
-            <button onClick={navigateToSystemlogs}>System Logs</button>
+            <button className='btn1' onClick={navigateToSrecords}>Student Records</button>
+            <button className='btn1' onClick={navigateToSystemlogs}>System Logs</button>
             
         </div>
     </div>

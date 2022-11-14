@@ -5,10 +5,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
-button {
+.btn1 {
 
     background: orange;
-    color: white;
+    color: rgb(255, 255, 255);
     border: solid 1px white;
     text-decoration: none;
     cursor: pointer;

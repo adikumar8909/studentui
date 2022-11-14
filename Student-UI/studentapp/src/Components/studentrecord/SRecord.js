@@ -1,6 +1,8 @@
 import React from 'react'
 import { useEffect, useState } from "react";
 import './SRecords.css'
+import Deletepop from './Deletepop' 
+import Popup from './Popup';
 function SRecord() {
   const [data, setData] = useState([]);
   const [show,setShow]=useState(false)
@@ -12,6 +14,8 @@ function SRecord() {
   })
   const[studentData,setStudentData]=useState([])
 
+ 
+
   const fetchData = () => {
     fetch('http://localhost:5000/getstudents', {
       method: 'GET',
@@ -20,7 +24,8 @@ function SRecord() {
         'Content-Type': 'application/json'
       },
     }).then(res => res.json())
-      .then(res => setStudentData(...studentData,res.data));
+    .then(res => console.log(res?.data))
+      .then(res => setStudentData((prevState) => [...prevState, ...res?.data]));
   };
 
   const changeHandler=(e)=>{
@@ -32,75 +37,84 @@ function SRecord() {
   useEffect(() => {
     
     fetchData();
-  }, [studentDetails]);// eslint-disable-line react-hooks/exhaustive-deps
+  }, [studentData]);// eslint-disable-line react-hooks/exhaustive-deps
+
+
+
+
+
 
   return (
     <div>
+     <h1 className="recordheading">Record Table</h1>
       <div id='tablebox'>
         <table className="table table-striped table-dark">
           <thead>
             <tr>
-              <th scope="col">SNo</th>
+              <th scope="col">Sno</th>
               <th scope="col">Name</th>
               <th scope="col">Age</th>
               <th scope="col">Mobile</th>
               <th scope="col">Email</th>
+              
+              <th scope="col">Delete Student</th>
             </tr>
           </thead>
           <tbody>
-            {data.map((item, index) => (
-              <tr key={index}>
-                <td>{item.SNo}</td>
-                <td>{item.Name}</td>
-                <td>{item.Age}</td>
-                <td>{item.Mobile}</td>
-                <td>{item.Email}</td>
+         {studentData?.map((student,index)=> (
+              <tr key={index }>
+                <td>{index+1}</td>
+                <td>{student.Name}</td>
+                <td>{student.Age}</td>
+                <td>{student.Mobile}</td>
+                <td>{student.Email}</td>
+               
+              <><Deletepop>  <td><button  className='btn4 btn-link' >Delete</button>  </td></Deletepop></>
               </tr>
             ))}
 
           </tbody>
         </table>
       </div>
-      <div className='buttonbox'>
-        <button onClick={()=>setShow(!show)}>Add Student</button>
-        <button>Update Student</button>
-        <button>Delete Student</button>
-      </div>
      
-      {show && <form onSubmit={(e) => {
-        e.preventDefault();
-        console.log(e);
-        fetch('http://localhost:5000/create', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json, text/plain, */*',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(studentDetails)
-        }).then(res => res.json())
-          .then(res => console.log(res));
-            
-      }}>
-        <input type='type' placeholder='Name' name='Name'  onChange={changeHandler}/>
-        <input type='type' placeholder='Age' name='Age'    onChange={changeHandler}/>
-        <input type='number' placeholder='Phone' name='Mobile'   onChange={changeHandler}/>
-        <input type='email' placeholder='Email' name="Email"   onChange={changeHandler}/>
 
-        <button>Add</button>
-      </form>}
-      
 
-      {
-        studentData?.map((student,index)=>{
-          console.log(student);
-          return(
-                 <p>{index+1 } {student.Name}</p>
-            )
-        })}
-      
+   
+{show && <form onSubmit={(e) => {
+    e.preventDefault();
+    console.log(e);
+    fetch('http://localhost:5000/create', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(studentDetails)
+    }).then(res => res.json())
+      .then(res =>setStudentData(...studentData,res.data));
+        
+  }}>
+    <input type='type' placeholder='Name' name='Name'  onChange={changeHandler}/>
+    <input type='type' placeholder='Age' name='Age'    onChange={changeHandler}/>
+    <input type='number' placeholder='Phone' name='Mobile'   onChange={changeHandler}/>
+    <input type='email' placeholder='Email' name="Email"   onChange={changeHandler}/>
 
+    <button>Add</button>
+  </form>}
+
+  
+     <div className='buttonbox'>
+     
+    <button className='btn3' onClick={()=>setShow(!show)}>Add Student</button>
+    <Popup><button  className='btn5 btn-link' >Edit</button> </Popup> 
+    
+  </div>
+  
+  
     </div>
-  ) 
+  )
 }
 
 export default SRecord
+
+// 3333333333
