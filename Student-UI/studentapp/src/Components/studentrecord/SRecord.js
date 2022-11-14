@@ -24,8 +24,7 @@ function SRecord() {
         'Content-Type': 'application/json'
       },
     }).then(res => res.json())
-    .then(res => console.log(res?.data))
-      .then(res => setStudentData((prevState) => [...prevState, ...res?.data]));
+      .then(res => setStudentData(...studentData,res.data));
   };
 
   const changeHandler=(e)=>{
@@ -37,7 +36,7 @@ function SRecord() {
   useEffect(() => {
     
     fetchData();
-  }, [studentData]);// eslint-disable-line react-hooks/exhaustive-deps
+  }, [studentDetails]);// eslint-disable-line react-hooks/exhaustive-deps
 
 
 
@@ -61,7 +60,7 @@ function SRecord() {
             </tr>
           </thead>
           <tbody>
-         {studentData?.map((student,index)=> (
+         {studentData.length>0 && studentData.map((student,index)=> (
               <tr key={index }>
                 <td>{index+1}</td>
                 <td>{student.Name}</td>
@@ -91,7 +90,7 @@ function SRecord() {
       },
       body: JSON.stringify(studentDetails)
     }).then(res => res.json())
-      .then(res =>setStudentData(...studentData,res.data));
+      .then(res => console.log(res));
         
   }}>
     <input type='type' placeholder='Name' name='Name'  onChange={changeHandler}/>
