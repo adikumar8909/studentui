@@ -1,24 +1,25 @@
-body {
-  font-family: Arial, sans-serif;
-  background: url(http://www.shukatsu-note.com/wp-content/uploads/2014/12/computer-564136_1280.jpg) no-repeat;
-  background-size: cover;
-  height: 100vh;
+.box {
+  width: 1%;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.2);
+  padding: 5px;
+  border: 2px solid #fff;
+  border-radius: 20px/50px;
+  background-clip: padding-box;
+  text-align: center;
 }
 
-
-.buttone {
-  background: orange;
-    color: rgb(255, 255, 255);
-    border: solid 1px white;
-    width: 40px;
-    cursor: pointer;
-    font-size: 1.2em;
-    padding: 5px;
-    margin-left: 15%;
-    
-   border-radius: 10px;
+.button {
+  font-size: 1em;
+  padding: 10px;
+  color: #fff;
+  border: 2px solid #06D85F;
+  border-radius: 20px/50px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
 }
-.buttone:hover {
+.button:hover {
   background: #06D85F;
 }
 
@@ -50,7 +51,7 @@ body {
 
 .popup h2 {
   margin-top: 0;
-  color: #333;
+  color: rgb(200, 22, 22);
   font-family: Tahoma, Arial, sans-serif;
 }
 .popup .close {

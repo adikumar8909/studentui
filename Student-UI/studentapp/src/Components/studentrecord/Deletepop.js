@@ -1,26 +1,23 @@
 import React from 'react'
 import './Deletepop.css'
-const Popup = () => {
+const Deletepop = () => {
   return (
 	<div>
-	      <div>
-      
-<div>
-	<a className="buttond" href="#popup1">Delete</a>
-</div>
-
-<div id="popup1" className="overlay">
-	<div className="popup">
-		<h2>Delete Details</h2>
-		<a className="close" href="#">&times;</a>
-		<div className="content">
-			Thank to pop me out of that button, but now i'm done so you can close this window.
+		<div>
+		<a class="buttond" href='#popd'>Delete</a>
+	  </div>
+	  <div id='popd' className='overlay'>
+		<div className='pop'>
+			<h2>Delete details</h2>
+			<a className='closed' href='#'>&times;</a>
+			<div className="contentd">
+				thnks for popup
+			</div>
 		</div>
-	</div>
-</div>
-    </div>
+	  </div>
 	</div>
   )
 }
 
-export default Popup
+export default Deletepop
+

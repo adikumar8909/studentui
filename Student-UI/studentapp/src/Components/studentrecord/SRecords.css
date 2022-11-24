@@ -29,19 +29,9 @@
     transition: 0.7s;
 }
 
-.btn4{
-    color: rgb(255, 6, 6);
-    border: 0px;
-    cursor: pointer;
-    transition: all 0.3s ease-out;
-    border: 2px solid hsl(145, 95%, 44%);
-    border-radius: 60px;
-}
-.btn5{
-    color: aqua;
-    border: 0px;
-    font-weight: bold;
-}
+
+
+
 
 .recordheading{
 text-align: center;
