@@ -53,3 +53,15 @@ import { useNavigate } from 'react-router';
 }
 
 export default Addstudent
+
+
+
+
+{/*<div className="addbox">  
+    <a className='addbutton' href='#addpop1'>Add Student</a>
+    </div>
+    <div id="addpop1" className='addoverlay'>
+      <div className='addpop'>
+       <h2>Add details</h2>
+        <a className='aclose' href='#'>&times;</a>
+        <div className='acontent'></div>  */}
